@@ -7,7 +7,8 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "plop": "plop"
   },
   "dependencies": {
     "next": "12.0.8",
@@ -30,6 +31,8 @@
     "eslint": "8.7.0",
     "eslint-config-next": "12.0.8",
     "eslint-plugin-storybook": "^0.5.6",
+    "inquirer-fuzzy-path": "^2.3.0",
+    "plop": "^3.0.5",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.15",
     "typescript": "4.5.5"
