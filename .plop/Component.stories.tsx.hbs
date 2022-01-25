@@ -1,22 +1,16 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import * as React from 'react';
-
-import {{ properCase ( getName path ) }} from '@/{{ getFolder path }}/{{ properCase ( getName path ) }}';
+import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import {{ name }} from './index'
 
 export default {
-title: '{{ directoryCase ( getFolder path ) }}/{{ properCase ( getName path ) }}',
-component: {{ properCase ( getName path ) }},
-argTypes: {
-// override React.ReactNode type with this
-// children: {
-// control: { type: 'text' },
-// },
-},
-} as ComponentMeta<typeof {{ properCase ( getName path ) }}>;
+title: 'Stories/{{ name }}',
+component: {{ name }},
+argTypes: {},
+} as ComponentMeta<typeof {{ name }}>
 
-const Template: ComponentStory<typeof {{ properCase ( getName path ) }}> = (args) => (
-    <{{ properCase ( getName path ) }} {...args} />
-);
+const Template: ComponentStory<typeof {{ name }}> = (args) => (
+<{{ name }} {...args} />
+)
 
-export const Default = Template.bind({});
-Default.args = {};
+export const _{{ name }} = Template.bind({})
+_{{ name }}.args = {}

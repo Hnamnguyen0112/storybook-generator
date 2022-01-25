@@ -1,39 +1,28 @@
-const inquirerFuzzyPath = require('inquirer-fuzzy-path');
-const storyGenerator = require('./.plop/story');
+const fs = require('fs')
 
 module.exports = function (plop) {
-  plop.setGenerator('stories', storyGenerator);
+  plop.setActionType('folder', function (answers, config, plop) {
+    const dir = `./src/stories/${answers.name}`
+    fs.mkdirSync(dir, { recursive: true })
+  })
 
-  //#region  //*=========== Handlebars Helper ===========
-  /**
-   * Generate story component route
-   * @see https://stackoverflow.com/questions/41490076/capitalize-every-letter-after-and-characters
-   */
-  plop.setHelper('directoryCase', function (title) {
-    return title.replace(/(^|\/|-)(\S)/g, (s) => s.toUpperCase());
-  });
-
-  /**
-   * Remove 'src', and file name from path
-   */
-  plop.setHelper('getFolder', (path) => {
-    const split = path.split('/');
-    // remove filename
-    split.pop();
-    if (split[0] === 'src') split.splice(0, 1);
-    return split.join('/');
-  });
-
-  /**
-   * Get file name from path, removing .tsx prefix
-   */
-  plop.setHelper('getName', (path) => {
-    const split = path.split('/');
-    return split[split.length - 1].replace(/\.tsx$/, '');
-  });
-  //#endregion  //*======== Handlebars Helper ===========
-
-  //#region  //*=========== Inquirer Prompt ===========
-  plop.setPrompt('fuzzypath', inquirerFuzzyPath);
-  //#endregion  //*======== Inquirer Prompt ===========
-};
+  plop.setGenerator('test', {
+    prompts: [{
+      type: 'input',
+      name: 'name',
+      message: 'Name of the component to create:',
+    }],
+    actions: [{
+      type: 'folder',
+      configProp: 'available from the config param',
+    }, {
+      type: 'add',
+      path: 'src/stories/{{name}}/index.tsx',
+      templateFile: '.plop/Component.tsx.hbs',
+    }, {
+      type: 'add',
+      path: 'src/stories/{{name}}/{{name}}.stories.tsx',
+      templateFile: '.plop/Component.stories.tsx.hbs',
+    }],
+  })
+}
