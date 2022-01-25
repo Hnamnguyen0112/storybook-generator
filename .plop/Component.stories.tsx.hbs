@@ -3,13 +3,13 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import {{ name }} from './index'
 
 export default {
-title: 'Stories/{{ name }}',
-component: {{ name }},
-argTypes: {},
+    title: 'Stories/{{ name }}',
+    component: {{ name }},
+    argTypes: {},
 } as ComponentMeta<typeof {{ name }}>
 
 const Template: ComponentStory<typeof {{ name }}> = (args) => (
-<{{ name }} {...args} />
+    <{{ name }} {...args} />
 )
 
 export const _{{ name }} = Template.bind({})

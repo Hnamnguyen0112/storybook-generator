@@ -1,12 +1,15 @@
 import React from 'react'
 
-const {{ name }} = () => {
+interface {{ name }}Props {}
+
+const {{ name }}: React.FC<{{ name }}Props> = React.memo(props => {
     return (
-        <></>
-    )
-}
+    <></>
+)
+})
 
 {{ name }}.propTypes = {}
 {{ name }}.defaultProps = {}
 
-export default React.memo({{ name }})
+export default {{ name }}
+
